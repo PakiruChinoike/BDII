@@ -30,8 +30,8 @@ public class LivroServiceImpl implements LivroService{
     }
 
     @Override
-    public List<Livro> findByDesc(String desc) {
-        return repository.findByDesc(desc);
+    public List<Livro> findByDescLike(String desc) {
+        return repository.findByDescLike(desc);
     }
 
     @Override
