@@ -23,10 +23,13 @@ public class Avaliacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "avaliacao_id")
-    private long id;
+    private Long id;
 
     @Column (name = "nota")
-    private double nota;
+    private Double nota;
+
+    @Column (name = "texto")
+    private String texto;
 
     @OneToOne
     @Column (name = "Usuario")

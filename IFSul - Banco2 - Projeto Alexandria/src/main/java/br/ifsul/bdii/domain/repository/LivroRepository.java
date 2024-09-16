@@ -12,10 +12,10 @@ import br.ifsul.bdii.domain.entity.Livro;
 public interface LivroRepository extends JpaRepository
 <Livro, Long>{
 
-    @Query(" select l from livro where l.nome like%:name%")
+    @Query(" select l from livro where l.nome like %:name%")
     List<Livro> findByNameLike(@Param("name")String name);
 
-    @Query(" select l from livro where l.descricao like%:descrip%")
+    @Query(" select l from livro where l.descricao like %:descrip%")
     List<Livro> findByDescLike(@Param("descrip")String descrip);
 
     @Query(" select l from livro where l.ano<=dataSince order by asc")

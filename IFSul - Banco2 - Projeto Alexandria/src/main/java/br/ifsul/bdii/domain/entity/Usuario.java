@@ -37,6 +37,9 @@ public class Usuario {
 	@Column(name = "telefone")
 	private String telefone;
 
+	@Column(name = "emprestimo")
+	private Boolean emprestimo;
+
 	@Column(name = "alerta")
 	private Boolean alerta;
 

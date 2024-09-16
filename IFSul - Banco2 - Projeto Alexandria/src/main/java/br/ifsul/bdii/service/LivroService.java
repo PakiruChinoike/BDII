@@ -8,7 +8,7 @@ public interface LivroService{
 
     Livro findById(Long id);
     List<Livro> findByNameLike(String name);
-    List<Livro> findByDesc(String descrip);
+    List<Livro> findByDescLike(String descrip);
     List<Livro> findByDateSince(Date dateSince);
     List<Livro> findAll();
     Livro save (Livro livro);

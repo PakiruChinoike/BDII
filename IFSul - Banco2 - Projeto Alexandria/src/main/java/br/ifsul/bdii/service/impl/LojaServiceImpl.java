@@ -25,6 +25,16 @@ public class LojaServiceImpl implements LojaService{
     }
 
     @Override
+    public List<Loja> findByNameLike(String name) {
+        return repository.findByNameLike(name);
+    }
+
+    @Override
+    public List<Loja> findByCity(String city) {
+        return repository.findByCity(city);
+    }
+
+    @Override
     public List<Loja> findAll() {
         return repository.findAll();
     }

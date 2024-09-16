@@ -18,7 +18,7 @@ public interface FuncionarioRepository extends JpaRepository
     List<Funcionario> findByEmail(@Param("gmail")String gmail);
 
     @Query(" select f from fruncionairo where f.telefone=:phone")
-    List<Funcionario> findByPhone(@Param("phone")String phone)
+    List<Funcionario> findByPhone(@Param("phone")String phone);
 
 
 }
