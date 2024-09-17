@@ -15,22 +15,22 @@ import br.ifsul.bdii.domain.entity.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 
-    @Query(" select u from Usuario u where cpf=:cpf")
+    @Query(" select u from Usuario u where u.cpf=:cpf")
     Optional<Usuario> findByCPF(@Param("cpf")String cpf);
 
-    @Query(" select u from Usuario u where name like %:name%")
+    @Query(" select u from Usuario u where u.nome like %:name%")
     List<Usuario> findByNameLike(@Param("name")String name);
 
-    @Query(" select u from Usuario u where email like %:email%")
+    @Query(" select u from Usuario u where u.email like %:email%")
     List<Usuario> findByEmailLike(@Param("email")String email);
 
-    @Query(" select u from Usuario u where alerta is true")
+    @Query(" select u from Usuario u where u.alerta is true")
     List<Usuario> findIfAlert();
 
     @Query(value=" select e from Emprestimo e join Usuario u on e.usuario=u.usuario_id where u.usuario_id=:id and u.emprestimo is true limit 1", nativeQuery=true)
     Optional<Emprestimo> findCurrentEmprestimo(@Param("id")Long id);
 
-    @Query(" select a from Avaliacao a join Usuario u where u.usuario_id=:id")
+    @Query(" select a from Avaliacao a join Usuario u where u.id=:id")
     List<Avaliacao> findAvaliacoes(@Param("id")Long id);
 
 }

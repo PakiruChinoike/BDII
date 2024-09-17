@@ -11,10 +11,10 @@ import br.ifsul.bdii.domain.entity.Loja;
 @Repository
 public interface LojaRepository extends JpaRepository<Loja, Long>{
 
-    @Query(" select l from Loja where l.name like %:name%")
+    @Query(" select l from Loja l where l.nome like %:name%")
     List<Loja> findByNameLike(@Param("name")String name);
 
-    @Query(" select l from Loja l join Endereco e where e.city like %:city%")
+    @Query(" select l from Loja l join Endereco e where e.cidade like %:city%")
     List<Loja> findByCity(@Param("city")String city);
 
 }

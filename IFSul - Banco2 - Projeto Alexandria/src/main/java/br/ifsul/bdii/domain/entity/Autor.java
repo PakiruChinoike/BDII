@@ -23,7 +23,7 @@ public class Autor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "autor_id")
-    private long id;
+    private Long id;
 
     @Column (name = "nome")
     private String nome;
@@ -33,7 +33,7 @@ public class Autor {
 
     @Column (name = "nacionalidade")
     private String nacionalidade;
-    
+
     @Column (name = "data_nascimento")
     private Date dataNascimento;
     

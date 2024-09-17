@@ -28,11 +28,14 @@ public class Usuario {
 	@Column(name = "nome")
 	private String nome;
 
-	@Column(name = "email")
+	@Column(name = "email", unique = true)
 	private String email;
 
 	@Column(name = "senha")
 	private String senha;
+
+	@Column(name = "cpf", unique = true)
+	private String cpf;
 
 	@Column(name = "telefone")
 	private String telefone;

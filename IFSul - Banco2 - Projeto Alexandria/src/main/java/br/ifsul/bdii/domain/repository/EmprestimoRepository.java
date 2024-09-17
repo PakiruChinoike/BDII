@@ -12,16 +12,16 @@ import br.ifsul.bdii.domain.entity.Emprestimo;
 public interface EmprestimoRepository extends JpaRepository
 <Emprestimo, Long>{
 
-    @Query(" select e from emprestimo e where e.data_emprestimo=:dateLoan")
+    @Query(" select e from Emprestimo e where e.dataEmprestimo=:dateLoan")
     List<Emprestimo> findByDateLoan(@Param("dateLoan")Date dateLoan);
 
-    @Query(" select e from emprestimo e where e.data_devolucao=:dateReturn")
+    @Query(" select e from Emprestimo e where e.dataDevolucao=:dateReturn")
     List<Emprestimo> findByDateReturn(@Param("dateReturn")Date dateReturn);
 
-    @Query(" select e from emprestimo e where e.data_devolucao<:dateSince order by data_emprestimo asc")
+    @Query(" select e from Emprestimo e where e.dataDevolucao<:dateSince order by dataEmprestimo asc")
     List<Emprestimo> findByDateSince(@Param("dateSince")Date dateSince);
 
-    @Query(" select e from emprestimo e join e.livro l where l.nome like:nome")
-    List<Emprestimo> findByLivroName(@Param("nome") String nome);
+    @Query(" select e from Emprestimo e join e.livro l where l.titulo like:name")
+    List<Emprestimo> findByLivroName(@Param("name") String nome);
 
 }

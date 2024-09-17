@@ -11,12 +11,12 @@ import br.ifsul.bdii.domain.entity.Endereco;
 public interface EnderecoRepository extends JpaRepository
 <Endereco, Long>{
 
-    @Query(" select e from endereco where e.cep=:ceps")
+    @Query(" select e from Endereco e where e.cep=:ceps")
     List<Endereco> findByCep(@Param("ceps")String ceps);
 
-    @Query( "seletc e from endereco where e.estado=:state")
+    @Query( "select e from Endereco e where e.estado=:state")
     List<Endereco> findByState(@Param("state")String state);
 
-    @Query( "select e from endereco where e.cidade=:city")
+    @Query( "select e from Endereco e where e.cidade=:city")
     List<Endereco> findByCity(@Param("city")String city);
 }

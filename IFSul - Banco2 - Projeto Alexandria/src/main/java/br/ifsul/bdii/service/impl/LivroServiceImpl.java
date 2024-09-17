@@ -3,7 +3,8 @@ package br.ifsul.bdii.service.impl;
 import br.ifsul.bdii.service.LivroService;
 
 import java.util.List;
-import java.sql.Date;
+import java.time.Year;
+
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -35,8 +36,8 @@ public class LivroServiceImpl implements LivroService{
     }
 
     @Override
-    public List<Livro> findByDateSince(Date dateSince) {
-        return repository.findByDateSince(dateSince);
+    public List<Livro> findByYearSince(Year yearSince) {
+        return repository.findByYearSince(yearSince);
     }
 
     @Override

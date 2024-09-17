@@ -32,11 +32,9 @@ public class Avaliacao {
     private String texto;
 
     @OneToOne
-    @Column (name = "Usuario")
     private Usuario usuario;
 
     @OneToOne
-    @Column (name = "Livro")
     private Livro livro;
     
 

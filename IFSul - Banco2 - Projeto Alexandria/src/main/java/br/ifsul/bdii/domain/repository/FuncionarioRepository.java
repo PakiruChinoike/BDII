@@ -11,13 +11,13 @@ import br.ifsul.bdii.domain.entity.Funcionario;
 public interface FuncionarioRepository extends JpaRepository
 <Funcionario, Long>{
 
-    @Query(" select f from funcionario where f.nome like%:name%")
+    @Query(" select f from Funcionario f where f.nome like%:name%")
     List<Funcionario> findByNameLike (@Param("name")String name);
 
-    @Query(" select f from funcionario where f.email=:gmail")
+    @Query(" select f from Funcionario f where f.email=:gmail")
     List<Funcionario> findByEmail(@Param("gmail")String gmail);
 
-    @Query(" select f from fruncionairo where f.telefone=:phone")
+    @Query(" select f from Funcionario f where f.telefone=:phone")
     List<Funcionario> findByPhone(@Param("phone")String phone);
 
 

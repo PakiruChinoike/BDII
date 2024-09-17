@@ -38,7 +38,6 @@ public class Funcionario {
     private String telefone;
 
     @OneToOne
-    @Column (name="loja")
     private Loja loja;
 
 }

@@ -15,10 +15,10 @@ public interface AutorRepository extends JpaRepository
     @Query(" select a from Autor a where a.nome like%:name%")
     List<Autor> findByNameLike(@Param("name")String name);
     
-    @Query(" select a from Autor a where a.data_nascimento>:dateBirth order by data_nascimento asc")
+    @Query(" select a from Autor a where a.dataNascimento>:dateBirth")
     List<Autor> findByDateBirth(@Param("dateBirth") Date dateBirth);
 
-    @Query(" select a from Autor a where a.data_morte>:dateDeath order by data_morte desc")
+    @Query(" select a from Autor a where a.dataMorte>:dateDeath")
     List<Autor> findByDateDeath(@Param("dateDeath") Date dateDeath);
 
     @Query(" select a from Autor a where a.nacionalidade like:nation")

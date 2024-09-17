@@ -33,18 +33,14 @@ public class Emprestimo {
     private Date dataDevolucao;
 
     @OneToOne
-    @Column(name = "usuario")
     private Usuario usuario;
 
     @OneToOne
-    @Column (name = "funcionario")
     private Funcionario funcionario;
 
     @OneToOne
-    @Column (name = "loja")
     private Loja loja;
 
     @OneToOne
-    @Column (name = "livro")
     private Livro livro;
 }
