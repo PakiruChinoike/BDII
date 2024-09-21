@@ -3,10 +3,8 @@ package br.ifsul.bdii;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
+import br.ifsul.bdii.gui.UICadastroPessoa;
 import br.ifsul.bdii.gui.UILogin;
-
-// import br.ifsul.bdii.gui.UICadastroPessoa;
-// import br.ifsul.bdii.gui.UILogin;
 
 @SpringBootApplication
 public class Main {
@@ -17,7 +15,11 @@ public class Main {
 		sab.headless(false);
 		sab.run(args);
 
-		UILogin.launch(args);
+		UICadastroPessoa uicp = new UICadastroPessoa();
+		UILogin uilo = new UILogin();
+		
+		uicp.setVisible(true);
+		uilo.setVisible(true);
 	}
 
 }
