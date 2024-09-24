@@ -64,7 +64,7 @@ public class UICadastroUsuario extends JFrame {
 		btnCadastrar = new JButton();
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				
 			}
 		});
 
