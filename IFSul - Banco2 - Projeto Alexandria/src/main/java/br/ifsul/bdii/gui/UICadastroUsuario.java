@@ -61,10 +61,11 @@ public class UICadastroUsuario extends JFrame {
 		txtSenha.setBounds(100, 140, 90, 30);
 		contentPane.add(txtSenha);
 
-		btnCadastrar = new JButton();
+		btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				UILogin uiLog = new UILogin();
+				uiLog.setVisible(true);
 			}
 		});
 

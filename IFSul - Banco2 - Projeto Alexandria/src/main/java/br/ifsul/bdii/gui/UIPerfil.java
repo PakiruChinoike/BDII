@@ -1,5 +1,9 @@
 package br.ifsul.bdii.gui;
 
-public class UIPerfil {
+import javax.swing.JFrame;
+
+public class UIPerfil extends JFrame{
+
+    private static final long serialVersionUID = 1L;
     
 }

@@ -2,28 +2,21 @@ package br.ifsul.bdii.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import br.ifsul.bdii.domain.entity.Usuario;
-import br.ifsul.bdii.service.UsuarioService;
-import br.ifsul.bdii.service.impl.UsuarioServiceImpl;
+
 
 public class UILogin extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtNome;
-	private JTextField txtEmail;
 	private JPasswordField txtSenha;
 	private JButton btnEntrar;
 
@@ -51,12 +44,14 @@ public class UILogin extends JFrame {
 		contentPane.add(lblNewLabel_1);
 
 		txtSenha = new JPasswordField();
-		txtSenha.setBounds(100, 100, 90, 30);
+		txtSenha.setBounds(100, 60, 90, 30);
 		contentPane.add(txtSenha);
 
-		btnEntrar  = new JButton();
+		btnEntrar  = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
+				UIPrincipal uiPri = new UIPrincipal();
+				uiPri.setVisible(true);
 			}
 		});
 
