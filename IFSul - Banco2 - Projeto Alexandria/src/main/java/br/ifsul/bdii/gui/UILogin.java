@@ -30,21 +30,21 @@ public class UILogin extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Nome/email:");
-		lblNewLabel.setBounds(10, 20, 90, 30);
+		JLabel lblNewLabel = new JLabel("Nome/email");
+		lblNewLabel.setBounds(160, 20, 90, 30);
 		contentPane.add(lblNewLabel);
 
 		txtNome = new JTextField();
-		txtNome.setBounds(100, 20, 90, 30);
+		txtNome.setBounds(150, 20, 120, 30);
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
 
-		JLabel lblNewLabel_1 = new JLabel("Senha:");
-		lblNewLabel_1.setBounds(10, 60, 90, 30);
+		JLabel lblNewLabel_1 = new JLabel("Senha");
+		lblNewLabel_1.setBounds(160, 60, 90, 30);
 		contentPane.add(lblNewLabel_1);
 
 		txtSenha = new JPasswordField();
-		txtSenha.setBounds(100, 60, 90, 30);
+		txtSenha.setBounds(150, 60, 120, 30);
 		contentPane.add(txtSenha);
 
 		btnEntrar  = new JButton("Entrar");
@@ -55,7 +55,7 @@ public class UILogin extends JFrame {
 			}
 		});
 
-		btnEntrar.setBounds(100, 200, 100, 30);
+		btnEntrar.setBounds(160, 200, 100, 30);
 		contentPane.add(btnEntrar);
 
 

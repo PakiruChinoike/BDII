@@ -28,12 +28,12 @@ public class UIPrincipal extends JFrame{
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("Pesquisa:");
-        lblNewLabel.setBounds(10, 20, 90, 30);
+        JLabel lblNewLabel = new JLabel("Pesquisa");
+        lblNewLabel.setBounds(60, 20, 90, 30);
         contentPane.add(lblNewLabel);
 
         txtPesquisa = new JTextField();
-        txtPesquisa.setBounds(100, 20, 600, 30);
+        txtPesquisa.setBounds(50, 20, 600, 30);
         contentPane.add(txtPesquisa);
         txtPesquisa.setColumns(10);
 
@@ -53,7 +53,7 @@ public class UIPrincipal extends JFrame{
             public void actionPerformed(ActionEvent e){
             }
          });
-         btnBuscar.setBounds(700, 20, 60, 30);
+         btnBuscar.setBounds(650, 20, 60, 30);
          contentPane.add(btnBuscar);
 
         btnLivro = new JButton("Livro");
