@@ -9,7 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
