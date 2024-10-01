@@ -11,9 +11,6 @@ import br.ifsul.bdii.service.UsuarioService;
 import br.ifsul.bdii.service.impl.UsuarioServiceImpl;
 
 public class UIInicio extends JFrame {
-    
-  private UsuarioService controller = new UsuarioServiceImpl();
-  private Usuario usuario = new Usuario();
 
   private static final long serialVersionUID = 1L;
   private JPanel contentPane;
@@ -21,7 +18,12 @@ public class UIInicio extends JFrame {
   private JButton btnLogin;
   private JButton btnCadastro;
 
-  public UIInicio() {
+  private UsuarioService service;
+
+  public UIInicio(UsuarioService service) {
+
+    this.service = service;
+
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setBounds(100, 100, 500, 500);
     contentPane = new JPanel();
@@ -55,15 +57,6 @@ public class UIInicio extends JFrame {
 
     btnLogin.setBounds(200, 225, 100, 30);
     contentPane.add(btnLogin);
-  }
-
-  public static void main(String[] args) {
-    EventQueue.invokeLater(new Runnable() {
-      public void run() {
-        UIInicio uiInicio = new UIInicio();
-        uiInicio.setVisible(true);
-      }
-    });
   }
 
 }
