@@ -3,7 +3,7 @@ spring:
     url: jdbc:mysql://localhost:3306/biblio_alexandria
     driverClassName: com.mysql.cj.jdbc.Driver
     username: root
-    password: root
+    password: Arthur2806
   jpa:
     database-platform: org.hibernate.dialect.MySQLDialect
     properties:

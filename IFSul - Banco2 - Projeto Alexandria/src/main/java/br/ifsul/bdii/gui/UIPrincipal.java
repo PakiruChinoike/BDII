@@ -53,7 +53,7 @@ public class UIPrincipal extends JFrame{
             public void actionPerformed(ActionEvent e){
             }
          });
-         btnBuscar.setBounds(650, 20, 60, 30);
+         btnBuscar.setBounds(650, 20, 90, 30);
          contentPane.add(btnBuscar);
 
         btnLivro = new JButton("Livro");

@@ -1,5 +1,6 @@
 package br.ifsul.bdii.gui;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 
 public class UIComentarios extends JFrame{
@@ -44,8 +46,34 @@ public class UIComentarios extends JFrame{
 
             }
         });
-        btnComenta.setBounds(850, 30, 150, 30);
+        btnComenta.setBounds(850, 65, 150, 30);
         contentPane.add(btnComenta);
+
+        btnPerfil = new JButton("Perfil");
+        btnPerfil.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                UIPerfil uiPer = new UIPerfil();
+                uiPer.setVisible(true);
+            }
+        });
+        btnPerfil.setBounds(1050, 20, 90, 30);
+        contentPane.add(btnPerfil);
+
+        txtComentarios = new JLabel("comentario");
+        txtComentarios.setBounds(350, 300, 650, 75);
+        txtComentarios.setBorder(new LineBorder(Color.BLACK,1));
+        contentPane.add(txtComentarios);
+
+        btnVerPerfil = new JButton("Pessoa");
+        btnVerPerfil.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+
+            }
+        });
+        btnVerPerfil.setBounds(210, 320, 100, 30);
+        contentPane.add(btnVerPerfil);
+
+
 
     }
 
