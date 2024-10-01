@@ -2,11 +2,19 @@ package br.ifsul.bdii.gui;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import javax.swing.border.EmptyBorder;
 
+import br.ifsul.bdii.domain.entity.Usuario;
+import br.ifsul.bdii.service.UsuarioService;
+import br.ifsul.bdii.service.impl.UsuarioServiceImpl;
+
 public class UIInicio extends JFrame {
     
+  private UsuarioService controller = new UsuarioServiceImpl();
+  private Usuario usuario = new Usuario();
+
   private static final long serialVersionUID = 1L;
   private JPanel contentPane;
   private JLabel biblioAlexandria;
@@ -48,5 +56,15 @@ public class UIInicio extends JFrame {
     btnLogin.setBounds(200, 225, 100, 30);
     contentPane.add(btnLogin);
   }
+
+  public static void main(String[] args) {
+    EventQueue.invokeLater(new Runnable() {
+      public void run() {
+        UIInicio uiInicio = new UIInicio();
+        uiInicio.setVisible(true);
+      }
+    });
+  }
+
 }
     

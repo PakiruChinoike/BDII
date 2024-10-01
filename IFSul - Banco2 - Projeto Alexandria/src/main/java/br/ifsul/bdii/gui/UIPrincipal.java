@@ -16,12 +16,11 @@ public class UIPrincipal extends JFrame{
     private JPanel contentPane;
     private JButton btnBuscar;
     private JTextField txtPesquisa;
-    private JButton btnLivro;
     private JButton btnPerfil;
 
     public UIPrincipal(){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 1200, 600);
+        setBounds(100, 100, 1300, 700);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -56,16 +55,20 @@ public class UIPrincipal extends JFrame{
          btnBuscar.setBounds(650, 20, 90, 30);
          contentPane.add(btnBuscar);
 
-        btnLivro = new JButton("Livro");
-        btnLivro.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e){
-                UILivro uiLiv = new UILivro();
-                uiLiv.setVisible(true);
-            }
-        });
+        for(int y = 100; y<600; y = y+180) {
+            for(int x = 100; x<1200; x = x+140) {
+                JButton btnLivro = new JButton("Livro");
+                btnLivro.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e){
+                    UILivro uiLiv = new UILivro();
+                    uiLiv.setVisible(true);
+                }
+            });
 
-        btnLivro.setBounds(100, 100, 90, 130);
-        contentPane.add(btnLivro);
+                btnLivro.setBounds(x, y, 90, 130);
+                contentPane.add(btnLivro);
+            }
+        }
 
     }
 

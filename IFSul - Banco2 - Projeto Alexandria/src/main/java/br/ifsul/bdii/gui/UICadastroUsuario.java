@@ -71,6 +71,5 @@ public class UICadastroUsuario extends JFrame {
 
 		btnCadastrar.setBounds(100, 200, 100, 30);
 		contentPane.add(btnCadastrar);
-
 	}
 }

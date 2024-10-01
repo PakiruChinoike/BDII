@@ -4,11 +4,14 @@ import br.ifsul.bdii.service.UsuarioService;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import br.ifsul.bdii.exception.ServiceRuleException;
 import br.ifsul.bdii.domain.repository.UsuarioRepository;
+import br.ifsul.bdii.Main;
 import br.ifsul.bdii.domain.entity.Avaliacao;
 import br.ifsul.bdii.domain.entity.Emprestimo;
 import br.ifsul.bdii.domain.entity.Usuario;
@@ -17,7 +20,15 @@ import br.ifsul.bdii.domain.entity.Usuario;
 @RequiredArgsConstructor
 public class UsuarioServiceImpl implements UsuarioService{
     
+    private AnnotationConfigApplicationContext context;
+
+    @Autowired
     private final UsuarioRepository repository;
+
+    public UsuarioServiceImpl() {
+        this.context = new AnnotationConfigApplicationContext(Main.class);
+        this.repository = context.getBean(UsuarioRepository.class);
+    }
 
     @Override
     public Usuario findById(Long id) {

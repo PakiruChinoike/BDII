@@ -11,15 +11,14 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-
 public class UILogin extends JFrame {
+
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtNome;
 	private JPasswordField txtSenha;
 	private JButton btnEntrar;
-
 
 	public UILogin() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -57,9 +56,6 @@ public class UILogin extends JFrame {
 
 		btnEntrar.setBounds(160, 200, 100, 30);
 		contentPane.add(btnEntrar);
-
-
-
 	}
 
 }
