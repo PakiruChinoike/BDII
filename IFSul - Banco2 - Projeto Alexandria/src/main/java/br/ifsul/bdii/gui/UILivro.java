@@ -12,6 +12,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import br.ifsul.bdii.domain.entity.Livro;
+import br.ifsul.bdii.domain.entity.Usuario;
+
 
 public class UILivro extends JFrame{
 
@@ -26,7 +29,7 @@ public class UILivro extends JFrame{
     private JButton btnComentarios;
     private JButton btnPerfil;
 
-    public UILivro(){
+    public UILivro(Usuario usuario, Livro livro){
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 1200, 600);
         contentPane = new JPanel();

@@ -2,13 +2,8 @@ package br.ifsul.bdii.gui;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import javax.swing.border.EmptyBorder;
-
-import br.ifsul.bdii.domain.entity.Usuario;
-import br.ifsul.bdii.service.UsuarioService;
-import br.ifsul.bdii.service.impl.UsuarioServiceImpl;
 
 public class UIInicio extends JFrame {
 
@@ -18,11 +13,7 @@ public class UIInicio extends JFrame {
   private JButton btnLogin;
   private JButton btnCadastro;
 
-  private UsuarioService service;
-
-  public UIInicio(UsuarioService service) {
-
-    this.service = service;
+  public UIInicio() {
 
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setBounds(100, 100, 500, 500);
@@ -52,6 +43,7 @@ public class UIInicio extends JFrame {
       public void actionPerformed(ActionEvent e) {
         UILogin uiLog = new UILogin();
         uiLog.setVisible(true);
+        dispose();
       }
     });
 

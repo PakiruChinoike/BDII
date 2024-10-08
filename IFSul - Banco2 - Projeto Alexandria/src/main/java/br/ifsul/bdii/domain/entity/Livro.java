@@ -47,8 +47,4 @@ public class Livro {
     @OneToOne
     private Autor autor;
 
-    @ManyToMany
-    @JoinTable(name = "loja")
-    private List<Loja> estoque;
-
 }

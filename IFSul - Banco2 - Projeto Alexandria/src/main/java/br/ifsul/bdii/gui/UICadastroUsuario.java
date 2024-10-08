@@ -10,6 +10,10 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
+import br.ifsul.bdii.Starter;
+import br.ifsul.bdii.domain.entity.Usuario;
+import br.ifsul.bdii.service.UsuarioService;
+
 public class UICadastroUsuario extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -19,8 +23,12 @@ public class UICadastroUsuario extends JFrame {
 	private JTextField txtTelefone;
 	private JPasswordField txtSenha;
 	private JButton btnCadastrar;
+
+	private UsuarioService usuarioService;
 	
 	public UICadastroUsuario() {
+		this.usuarioService = Starter._usuarioService;
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 300, 300);
 		contentPane = new JPanel();
@@ -64,12 +72,29 @@ public class UICadastroUsuario extends JFrame {
 		btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UILogin uiLog = new UILogin();
-				uiLog.setVisible(true);
+				Usuario usuario = realizarCadastro(txtNome.getText(), txtEmail.getText(), txtTelefone.getText(), new String(txtSenha.getPassword()));
+				if (usuario!=null) {
+					//MOSTRAR MENSAGEM DE USUARIO CRIADO
+				} else {
+					//MOSTRAR MENSAGEM DE ERRO
+				}
 			}
 		});
 
 		btnCadastrar.setBounds(100, 200, 100, 30);
 		contentPane.add(btnCadastrar);
+	}
+
+	private Usuario realizarCadastro(String nome, String email, String telefone, String senha) {
+		Usuario usuario = Usuario.builder()
+			.nome(nome)
+			.email(email)
+			.telefone(telefone)
+			.senha(senha)
+			.emprestimo(false)
+			.alerta(false)
+			.build();
+
+		return usuarioService.save(usuario);
 	}
 }

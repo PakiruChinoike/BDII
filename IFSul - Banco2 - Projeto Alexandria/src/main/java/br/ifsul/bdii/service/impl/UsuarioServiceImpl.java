@@ -19,16 +19,9 @@ import br.ifsul.bdii.domain.entity.Usuario;
 @Service
 @RequiredArgsConstructor
 public class UsuarioServiceImpl implements UsuarioService{
-    
-    private AnnotationConfigApplicationContext context;
 
     @Autowired
     private final UsuarioRepository repository;
-
-    public UsuarioServiceImpl() {
-        this.context = new AnnotationConfigApplicationContext(Main.class);
-        this.repository = context.getBean(UsuarioRepository.class);
-    }
 
     @Override
     public Usuario findById(Long id) {
@@ -38,10 +31,10 @@ public class UsuarioServiceImpl implements UsuarioService{
     }
 
     @Override
-    public Usuario findByCPF(String cpf) {
-        return repository.findByCPF(
-            cpf
-        ).orElseThrow(() -> new ServiceRuleException("Id de usuário não encontrado."));
+    public Usuario findByNameOrEmail(String string){
+        return repository.findByNameOrEmail(
+            string
+            ).orElseThrow(() -> new ServiceRuleException("Usuário não encontrado."));
     }
 
     @Override

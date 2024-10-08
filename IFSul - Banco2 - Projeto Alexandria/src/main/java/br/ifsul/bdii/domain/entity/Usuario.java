@@ -34,9 +34,6 @@ public class Usuario {
 	@Column(name = "senha")
 	private String senha;
 
-	@Column(name = "cpf", unique = true)
-	private String cpf;
-
 	@Column(name = "telefone")
 	private String telefone;
 
@@ -45,8 +42,5 @@ public class Usuario {
 
 	@Column(name = "alerta")
 	private Boolean alerta;
-
-	@OneToOne
-	private Endereco endereco;
 	
 }

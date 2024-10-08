@@ -9,7 +9,7 @@ import br.ifsul.bdii.domain.entity.Usuario;
 public interface UsuarioService{
 
     Usuario findById(Long id);
-    Usuario findByCPF(String cpf);
+    Usuario findByNameOrEmail(String string);
     List<Usuario> findByEmailLike(String email);
     List<Usuario> findByNameLike(String name);
     List<Usuario> findIfAlert();

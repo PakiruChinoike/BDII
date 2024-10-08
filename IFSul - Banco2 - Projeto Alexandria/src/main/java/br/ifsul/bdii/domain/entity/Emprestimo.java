@@ -36,11 +36,5 @@ public class Emprestimo {
     private Usuario usuario;
 
     @OneToOne
-    private Funcionario funcionario;
-
-    @OneToOne
-    private Loja loja;
-
-    @OneToOne
     private Livro livro;
 }

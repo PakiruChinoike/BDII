@@ -10,6 +10,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import br.ifsul.bdii.Starter;
+import br.ifsul.bdii.domain.entity.Livro;
+import br.ifsul.bdii.domain.entity.Usuario;
+import br.ifsul.bdii.service.LivroService;
+
 public class UIPrincipal extends JFrame{
 
     private static final long serialVersionUID = 1L;
@@ -18,7 +23,12 @@ public class UIPrincipal extends JFrame{
     private JTextField txtPesquisa;
     private JButton btnPerfil;
 
-    public UIPrincipal(){
+    private LivroService livroService;
+
+    public UIPrincipal(Usuario usuario){
+        
+        this.livroService = Starter._livroService;
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1300, 700);
         contentPane = new JPanel();
@@ -50,6 +60,7 @@ public class UIPrincipal extends JFrame{
         btnBuscar = new JButton("Buscar");
         btnBuscar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
+                buscarLivros();
             }
          });
          btnBuscar.setBounds(650, 20, 90, 30);
@@ -60,7 +71,7 @@ public class UIPrincipal extends JFrame{
                 JButton btnLivro = new JButton("Livro");
                 btnLivro.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e){
-                    UILivro uiLiv = new UILivro();
+                    UILivro uiLiv = new UILivro(usuario, null);
                     uiLiv.setVisible(true);
                 }
             });
@@ -69,11 +80,9 @@ public class UIPrincipal extends JFrame{
                 contentPane.add(btnLivro);
             }
         }
-
     }
 
-
-
-   
-    
+    private Livro buscarLivros() {
+        return null;
+    }
 }

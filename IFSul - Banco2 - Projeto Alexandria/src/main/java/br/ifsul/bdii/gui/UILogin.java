@@ -11,6 +11,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import br.ifsul.bdii.Starter;
+import br.ifsul.bdii.service.UsuarioService;
+import br.ifsul.bdii.domain.entity.Usuario;
+
 public class UILogin extends JFrame {
 
 
@@ -20,7 +24,11 @@ public class UILogin extends JFrame {
 	private JPasswordField txtSenha;
 	private JButton btnEntrar;
 
+	private UsuarioService usuarioService;
+
 	public UILogin() {
+		this.usuarioService = Starter._usuarioService;
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -49,8 +57,7 @@ public class UILogin extends JFrame {
 		btnEntrar  = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				UIPrincipal uiPri = new UIPrincipal();
-				uiPri.setVisible(true);
+				realizarLogin(txtNome.getText(), new String(txtSenha.getPassword()));
 			}
 		});
 
@@ -58,4 +65,13 @@ public class UILogin extends JFrame {
 		contentPane.add(btnEntrar);
 	}
 
+	private void realizarLogin(String string, String senha) {
+		Usuario usuario = usuarioService.findByNameOrEmail(string);
+		if(usuario.getSenha().equals(senha)) {
+			UIPrincipal uiPrincipal = new UIPrincipal(usuario);
+			uiPrincipal.setVisible(true);
+		} else {
+			//MOSTRAR ALERTA DE ERRO
+		}
+	}
 }

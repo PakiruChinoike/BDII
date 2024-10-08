@@ -14,20 +14,12 @@ public class DataSourceConfig {
     
     @Bean
     @ConfigurationProperties("app.datasource")
-    public DataSource dataSource() {
+    DataSource dataSource() {
+        @SuppressWarnings("rawtypes")
         DataSourceBuilder dsBuilder = DataSourceBuilder.create();
             dsBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
             dsBuilder.url("jdbc:mysql://localhost:3306/biblio_alexandria");
             dsBuilder.username("root");
-            dsBuilder.password("root");
             return dsBuilder.build();       
-    }
-
-    @Bean
-    void databaseRun() {
-        ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
-        populator.addScript(
-            new ClassPathResource("src/main/resources/data.sql"));
-        populator.execute(this.dataSource());
     }
 }

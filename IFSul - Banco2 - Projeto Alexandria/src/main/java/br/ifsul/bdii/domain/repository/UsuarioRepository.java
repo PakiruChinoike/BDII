@@ -15,8 +15,8 @@ import br.ifsul.bdii.domain.entity.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 
-    @Query(" select u from Usuario u where u.cpf=:cpf")
-    Optional<Usuario> findByCPF(@Param("cpf")String cpf);
+    @Query(" select u from Usuario u where u.nome=:string or u.email=:string")
+    Optional<Usuario> findByNameOrEmail(@Param("string")String string);
 
     @Query(" select u from Usuario u where u.nome like %:name%")
     List<Usuario> findByNameLike(@Param("name")String name);
