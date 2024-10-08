@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import br.ifsul.bdii.domain.entity.Usuario;
+
 public class UIComentarios extends JFrame{
 
     private static final long serialVersionUID = 1L;
@@ -19,7 +21,7 @@ public class UIComentarios extends JFrame{
     private JButton btnPerfil;
     private JButton btnVerPerfil;
 
-    public UIComentarios(){
+    public UIComentarios(Usuario usuario){
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 1200, 900);
         contentPane = new JPanel();
@@ -31,7 +33,7 @@ public class UIComentarios extends JFrame{
         btnPerfil = new JButton("Perfil");
         btnPerfil.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                UIPerfil uiPer = new UIPerfil();
+                UIPerfil uiPer = new UIPerfil(usuario);
                 uiPer.setVisible(true);
             }
         });

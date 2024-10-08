@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Builder.Default;
 
 @Data
 @AllArgsConstructor
@@ -31,6 +32,10 @@ public class Emprestimo {
 
     @Column (name = "data_devolucao")
     private Date dataDevolucao;
+
+    @Column (name = "estado")
+    @Default
+    private Boolean estado = false;
 
     @OneToOne
     private Usuario usuario;

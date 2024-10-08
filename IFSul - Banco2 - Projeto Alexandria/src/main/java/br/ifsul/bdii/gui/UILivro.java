@@ -11,9 +11,14 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.JOptionPane;
 
+import br.ifsul.bdii.Starter;
+import br.ifsul.bdii.domain.entity.Emprestimo;
 import br.ifsul.bdii.domain.entity.Livro;
 import br.ifsul.bdii.domain.entity.Usuario;
+import br.ifsul.bdii.service.EmprestimoService;
+import br.ifsul.bdii.service.LivroService;
 
 
 public class UILivro extends JFrame{
@@ -28,8 +33,16 @@ public class UILivro extends JFrame{
     private JButton btnEnviar;
     private JButton btnComentarios;
     private JButton btnPerfil;
+    private JButton btnEmprestimo;
+
+    private LivroService livroService;
+    private EmprestimoService emprestimoService;
 
     public UILivro(Usuario usuario, Livro livro){
+
+        livroService = Starter._livroService;
+        emprestimoService = Starter._emprestimoService;
+
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 1200, 600);
         contentPane = new JPanel();
@@ -80,7 +93,7 @@ public class UILivro extends JFrame{
         btnComentarios = new JButton("Comentarios");
         btnComentarios.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                UIComentarios uiCom = new UIComentarios();
+                UIComentarios uiCom = new UIComentarios(usuario);
                 uiCom.setVisible(true);
             }
         });
@@ -90,7 +103,7 @@ public class UILivro extends JFrame{
         btnPerfil = new JButton("Perfil");
         btnPerfil.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                UIPerfil uiPer = new UIPerfil();
+                UIPerfil uiPer = new UIPerfil(usuario);
                 uiPer.setVisible(true);
             }
         });
@@ -98,10 +111,24 @@ public class UILivro extends JFrame{
         btnPerfil.setBounds(650, 20, 90, 30);
         contentPane.add(btnPerfil);
 
+        btnEmprestimo = new JButton("Emprestimo");
+        btnEmprestimo.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                if(isEmprestado(livro)) {
+                    JOptionPane.showMessageDialog(contentPane, "", "", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(contentPane, "", "", JOptionPane.INFORMATION_MESSAGE);
+                    btnEmprestimo.setEnabled(false);
+                }
+            }
+        });
+        btnEmprestimo.setBounds(800, 20, 120, 30);
+        contentPane.add(btnEmprestimo);
+    }
 
+    private Boolean isEmprestado(Livro livro) {
+        Emprestimo e = emprestimoService.findByLivroId(livro.getId());
 
-
-
-
+        return e.getEstado();
     }
 }

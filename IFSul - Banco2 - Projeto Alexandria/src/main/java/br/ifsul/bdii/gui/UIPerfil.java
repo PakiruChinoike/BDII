@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import br.ifsul.bdii.domain.entity.Usuario;
+
 public class UIPerfil extends JFrame{
 
     private static final long serialVersionUID = 1L;
@@ -18,7 +20,7 @@ public class UIPerfil extends JFrame{
     private JLabel txtAvaliacao;
     private JLabel txtComentarios;
 
-    public UIPerfil (){
+    public UIPerfil (Usuario usuario){
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setBounds(100, 100, 1200, 600);
         contentJPanel = new JPanel();

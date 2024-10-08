@@ -7,7 +7,7 @@ import br.ifsul.bdii.domain.entity.Livro;
 public interface LivroService{
 
     Livro findById(Long id);
-    List<Livro> findByNameLike(String name);
+    List<Livro> findByTituloLike(String name);
     List<Livro> findByDescLike(String descrip);
     List<Livro> findByYearSince(Year dateSince);
     List<Livro> findAll();

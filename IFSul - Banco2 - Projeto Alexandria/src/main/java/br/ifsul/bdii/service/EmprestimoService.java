@@ -3,6 +3,7 @@ package br.ifsul.bdii.service;
 import java.sql.Date;
 import java.util.List;
 import br.ifsul.bdii.domain.entity.Emprestimo;
+import br.ifsul.bdii.domain.entity.Livro;
 
 public interface EmprestimoService{
 
@@ -11,6 +12,7 @@ public interface EmprestimoService{
     List<Emprestimo> findByDateReturn(Date dateReturn);
     List<Emprestimo> findByDateSince(Date dateSince);
     List<Emprestimo> findByLivroNome(String name);
+    Emprestimo findByLivroId(Long id);
     List<Emprestimo> findAll();
     Emprestimo save (Emprestimo emprestimo);
     void update (Emprestimo emprestimo, Long id);

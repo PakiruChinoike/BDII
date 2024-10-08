@@ -75,6 +75,7 @@ public class UICadastroUsuario extends JFrame {
 				Usuario usuario = realizarCadastro(txtNome.getText(), txtEmail.getText(), txtTelefone.getText(), new String(txtSenha.getPassword()));
 				if (usuario!=null) {
 					//MOSTRAR MENSAGEM DE USUARIO CRIADO
+					dispose();
 				} else {
 					//MOSTRAR MENSAGEM DE ERRO
 				}

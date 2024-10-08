@@ -5,13 +5,11 @@ import br.ifsul.bdii.service.UsuarioService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import br.ifsul.bdii.exception.ServiceRuleException;
 import br.ifsul.bdii.domain.repository.UsuarioRepository;
-import br.ifsul.bdii.Main;
 import br.ifsul.bdii.domain.entity.Avaliacao;
 import br.ifsul.bdii.domain.entity.Emprestimo;
 import br.ifsul.bdii.domain.entity.Usuario;

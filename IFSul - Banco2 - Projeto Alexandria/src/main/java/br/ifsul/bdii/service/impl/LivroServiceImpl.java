@@ -26,7 +26,7 @@ public class LivroServiceImpl implements LivroService{
     }
 
     @Override
-    public List<Livro> findByNameLike(String name) {
+    public List<Livro> findByTituloLike(String name) {
         return repository.findByNameLike(name);
     }
 

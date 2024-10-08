@@ -1,5 +1,8 @@
 package br.ifsul.bdii.gui;
 
+import java.util.List;
+import java.util.ArrayList;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -49,8 +52,9 @@ public class UIPrincipal extends JFrame{
         btnPerfil = new JButton("Perfil");
         btnPerfil.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                UIPerfil uiPer = new UIPerfil();
+                UIPerfil uiPer = new UIPerfil(usuario);
                 uiPer.setVisible(true);
+                dispose();
             }
         });
 
@@ -60,29 +64,51 @@ public class UIPrincipal extends JFrame{
         btnBuscar = new JButton("Buscar");
         btnBuscar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                buscarLivros();
+                buscarLivros(txtPesquisa.getText());
             }
          });
-         btnBuscar.setBounds(650, 20, 90, 30);
-         contentPane.add(btnBuscar);
+        btnBuscar.setBounds(650, 20, 90, 30);
+        contentPane.add(btnBuscar);
 
-        for(int y = 100; y<600; y = y+180) {
-            for(int x = 100; x<1200; x = x+140) {
-                JButton btnLivro = new JButton("Livro");
-                btnLivro.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e){
-                    UILivro uiLiv = new UILivro(usuario, null);
-                    uiLiv.setVisible(true);
-                }
-            });
+        inicializarLivros(usuario, buscarLivros(null));
+    }
 
-                btnLivro.setBounds(x, y, 90, 130);
-                contentPane.add(btnLivro);
-            }
+    private List<Livro> buscarLivros(String titulo) {
+        List<Livro> livros = new ArrayList<Livro>(24);
+
+        if(titulo==null) {
+            livros = livroService.findAll(); 
+            return livros;
+        } else {
+            livros = livroService.findByTituloLike(titulo);
+            return livros;
         }
     }
 
-    private Livro buscarLivros() {
-        return null;
+    private void inicializarLivros(Usuario usuario, List<Livro> livros) {
+            Integer k = -1;
+
+            livros.forEach(Livro -> {
+                k++;
+                JButton btnLivro = new JButton("Livro");
+                btnLivro.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        UILivro uiLivro = new UILivro(usuario, Livro);
+                        uiLivro.setVisible(true);
+                    } 
+                });
+                int x = 100+(140*k);
+                int y;
+                if(k>8 && k<16) {
+                    y = 280;
+                } else if (k>16) {
+                    y = 420;
+                } else {
+                    y = 100;
+                }
+
+                btnLivro.setBounds(x, y, 90, 130);
+                contentPane.add(btnLivro);
+            });
     }
 }

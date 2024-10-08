@@ -3,6 +3,7 @@ package br.ifsul.bdii.gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.*;
 import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JFrame;
@@ -30,7 +31,7 @@ public class UILogin extends JFrame {
 		this.usuarioService = Starter._usuarioService;
 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 350);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -71,7 +72,10 @@ public class UILogin extends JFrame {
 			UIPrincipal uiPrincipal = new UIPrincipal(usuario);
 			uiPrincipal.setVisible(true);
 		} else {
-			//MOSTRAR ALERTA DE ERRO
+			JOptionPane.showMessageDialog(contentPane, "Senha incorreta!", "Erro de Login", JOptionPane.ERROR_MESSAGE);
+			
+
 		}
 	}
+	
 }
