@@ -51,18 +51,18 @@ public class UILivro extends JFrame{
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        txtTitulo = new JLabel("Titulo");
+        txtTitulo = new JLabel(livro.getTitulo());
         txtTitulo.setBounds(65, 20, 90, 30);
         txtTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(txtTitulo);
 
-        txtAvaliacao = new JLabel("Avaliacao");
+        txtAvaliacao = new JLabel(String.valueOf(livro.getNota()));
         txtAvaliacao.setBounds(65, 450, 90, 30);
         txtAvaliacao.setBorder(new LineBorder(Color.BLACK, 1));
         txtAvaliacao.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(txtAvaliacao);
 
-        txtDescricao =new JLabel("Descrição");
+        txtDescricao =new JLabel(livro.getDescricao());
         txtDescricao.setBounds(400, 100, 600, 300);
         txtDescricao.setBorder(new LineBorder(Color.BLACK, 1));
         txtDescricao.setHorizontalAlignment(SwingConstants.LEFT);
@@ -115,9 +115,9 @@ public class UILivro extends JFrame{
         btnEmprestimo.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 if(isEmprestado(livro)) {
-                    JOptionPane.showMessageDialog(contentPane, "", "", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(contentPane, "ERRO. O livro já foi emprestado", "Erro de emprestimo", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(contentPane, "", "", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(contentPane, "CERTO. O livro foi emprestado com sucesso", "Sucesso no emprestimo", JOptionPane.INFORMATION_MESSAGE);
                     btnEmprestimo.setEnabled(false);
                 }
             }

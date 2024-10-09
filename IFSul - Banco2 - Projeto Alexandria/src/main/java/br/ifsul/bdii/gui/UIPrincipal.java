@@ -64,9 +64,11 @@ public class UIPrincipal extends JFrame{
         btnBuscar = new JButton("Buscar");
         btnBuscar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                buscarLivros(txtPesquisa.getText());
+                inicializarLivros(usuario, 
+                    buscarLivros(txtPesquisa.getText()));
             }
-         });
+        });
+        
         btnBuscar.setBounds(650, 20, 90, 30);
         contentPane.add(btnBuscar);
 
@@ -86,29 +88,46 @@ public class UIPrincipal extends JFrame{
     }
 
     private void inicializarLivros(Usuario usuario, List<Livro> livros) {
-            Integer k = -1;
+        Integer k = 0; 
 
-            livros.forEach(Livro -> {
-                k++;
-                JButton btnLivro = new JButton("Livro");
-                btnLivro.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        UILivro uiLivro = new UILivro(usuario, Livro);
-                        uiLivro.setVisible(true);
-                    } 
-                });
-                int x = 100+(140*k);
-                int y;
-                if(k>8 && k<16) {
-                    y = 280;
-                } else if (k>16) {
-                    y = 420;
-                } else {
-                    y = 100;
-                }
+        for (int i = contentPane.getComponentCount() - 1; i > 3; i--) {
+            if (contentPane.getComponent(i) instanceof JButton) {
+                contentPane.remove(i);
+            }
+        }
 
-                btnLivro.setBounds(x, y, 90, 130);
-                contentPane.add(btnLivro);
+        for (Livro livro : livros) {
+            JButton btnLivro = new JButton(livro.getTitulo()); 
+            btnLivro.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    UILivro uiLivro = new UILivro(usuario, livro);
+                    uiLivro.setVisible(true);
+                } 
             });
+
+            int x;
+            int y;
+
+            if (k >= 8 && k < 16) {
+                y = 280;
+                x = 100 + (140 * (k-8));
+            } else if (k >= 16) {
+                y = 460;
+                x = 100 + (140 * (k-16));
+            } else {
+                y = 100;
+                x = 100 + (140 * k);
+            }
+
+            btnLivro.setBounds(x, y, 90, 130);
+            contentPane.add(btnLivro);
+            k++;
+            if(k>=24) {
+                break;
+            }
+        }
+
+        contentPane.revalidate(); 
+        contentPane.repaint(); 
     }
 }

@@ -3,7 +3,6 @@ package br.ifsul.bdii.service;
 import java.sql.Date;
 import java.util.List;
 import br.ifsul.bdii.domain.entity.Emprestimo;
-import br.ifsul.bdii.domain.entity.Livro;
 
 public interface EmprestimoService{
 

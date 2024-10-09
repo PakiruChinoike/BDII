@@ -1,7 +1,5 @@
 package br.ifsul.bdii.domain.entity;
 
-import java.time.Year;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,7 +22,7 @@ import lombok.Builder.Default;
 public class Livro {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "livro_id")
     private Long id;
 
@@ -39,7 +37,7 @@ public class Livro {
     private Double nota = 0.0D;
 
     @Column(name = "ano")
-    private Year ano;
+    private String ano;
     
     @OneToOne
     private Autor autor;

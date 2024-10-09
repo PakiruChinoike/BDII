@@ -36,11 +36,6 @@ public class LivroServiceImpl implements LivroService{
     }
 
     @Override
-    public List<Livro> findByYearSince(Year yearSince) {
-        return repository.findByYearSince(yearSince);
-    }
-
-    @Override
     public List<Livro> findAll() {
         return repository.findAll();
     }

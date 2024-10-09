@@ -29,7 +29,7 @@ public class UIPerfil extends JFrame{
         setContentPane(contentJPanel);
         contentJPanel.setLayout(null);
 
-        txtFoto = new JLabel("Jonas");
+        txtFoto = new JLabel(usuario.getNome());
         txtFoto.setBounds(50, 50, 200, 200);
         txtFoto.setBorder(new LineBorder(Color.BLACK,1));
         contentJPanel.add(txtFoto);

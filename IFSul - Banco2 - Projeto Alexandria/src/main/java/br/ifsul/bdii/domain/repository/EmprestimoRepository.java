@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.sql.Date;
 import java.util.List;
 import br.ifsul.bdii.domain.entity.Emprestimo;
-import br.ifsul.bdii.domain.entity.Livro;
 
 @Repository
 public interface EmprestimoRepository extends JpaRepository
@@ -26,7 +25,7 @@ public interface EmprestimoRepository extends JpaRepository
     @Query(" select e from Emprestimo e join e.livro l where l.titulo like:name")
     List<Emprestimo> findByLivroName(@Param("name") String nome);
 
-    @Query(" select e from Emprestimo e join e.livro l where l.livro_id=:id") 
+    @Query(" select e from Emprestimo e join e.livro l where l.id=:id") 
     Optional<Emprestimo> findByLivroId(@Param("id") Long id);
 
 }

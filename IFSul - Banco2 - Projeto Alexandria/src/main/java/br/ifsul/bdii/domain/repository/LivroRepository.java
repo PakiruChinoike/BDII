@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import java.util.List;
-import java.time.Year;
 
 import br.ifsul.bdii.domain.entity.Livro;
 
@@ -18,7 +17,4 @@ public interface LivroRepository extends JpaRepository
 
     @Query(" select l from Livro l where l.descricao like %:descrip%")
     List<Livro> findByDescLike(@Param("descrip")String descrip);
-
-    @Query(" select l from Livro l where l.ano<=:yearSince order by l.ano asc")
-    List<Livro> findByYearSince(@Param("yearSince")Year yearSince);
 }
