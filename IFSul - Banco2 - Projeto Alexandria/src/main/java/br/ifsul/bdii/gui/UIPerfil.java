@@ -34,10 +34,14 @@ public class UIPerfil extends JFrame{
         txtFoto.setBorder(new LineBorder(Color.BLACK,1));
         contentJPanel.add(txtFoto);
 
-        txtInfo = new JLabel("Informações");
+        txtInfo = new JLabel("Informações:");
         txtInfo.setBounds(50, 300, 300, 200);
         txtInfo.setBorder(new LineBorder(Color.BLACK, 1));
         contentJPanel.add(txtInfo);
+
+        JLabel txtEmail = new JLabel("Email: " + usuario.getEmail());
+        txtEmail.setBounds(50, 350, 300, 200);
+        contentJPanel.add(txtEmail);
 
         txtdescricao = new JLabel("Descrição");
         txtdescricao.setBounds(500, 50, 600, 200);

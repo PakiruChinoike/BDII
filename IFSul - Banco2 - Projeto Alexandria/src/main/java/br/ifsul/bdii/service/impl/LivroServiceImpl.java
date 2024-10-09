@@ -3,7 +3,6 @@ package br.ifsul.bdii.service.impl;
 import br.ifsul.bdii.service.LivroService;
 
 import java.util.List;
-import java.time.Year;
 
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;

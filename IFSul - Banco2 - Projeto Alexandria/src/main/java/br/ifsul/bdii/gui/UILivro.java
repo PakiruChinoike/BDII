@@ -35,12 +35,10 @@ public class UILivro extends JFrame{
     private JButton btnPerfil;
     private JButton btnEmprestimo;
 
-    private LivroService livroService;
     private EmprestimoService emprestimoService;
 
     public UILivro(Usuario usuario, Livro livro){
 
-        livroService = Starter._livroService;
         emprestimoService = Starter._emprestimoService;
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
