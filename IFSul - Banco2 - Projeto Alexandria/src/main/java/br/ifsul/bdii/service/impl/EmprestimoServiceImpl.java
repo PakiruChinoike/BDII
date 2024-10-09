@@ -49,7 +49,7 @@ public class EmprestimoServiceImpl implements EmprestimoService{
     public Emprestimo findByLivroId(Long id) {
         return repository.findByLivroId(
             id
-        ).orElseThrow(() -> new ServiceRuleException("Id de livro não encontrado."));
+        ).orElse(null);
     }
 
     @Override

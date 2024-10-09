@@ -25,7 +25,7 @@ public interface EmprestimoRepository extends JpaRepository
     @Query(" select e from Emprestimo e join e.livro l where l.titulo like:name")
     List<Emprestimo> findByLivroName(@Param("name") String nome);
 
-    @Query(" select e from Emprestimo e join e.livro l where l.id=:id") 
+    @Query(value =" select * from Emprestimo e where e.livro=:id", nativeQuery=true) 
     Optional<Emprestimo> findByLivroId(@Param("id") Long id);
 
 }

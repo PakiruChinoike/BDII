@@ -73,8 +73,6 @@ public class UILogin extends JFrame {
 			uiPrincipal.setVisible(true);
 		} else {
 			JOptionPane.showMessageDialog(contentPane, "ERRO. Senha ou Usuario incorretos.", "Erro de Login", JOptionPane.ERROR_MESSAGE);
-			
-
 		}
 	}
 	

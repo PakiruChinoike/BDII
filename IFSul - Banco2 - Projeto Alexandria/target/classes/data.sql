@@ -39,11 +39,12 @@ CREATE TABLE IF NOT EXISTS Avaliacao(
 );
 
 CREATE TABLE IF NOT EXISTS Emprestimo(
-	id BIGINT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	emprestimo_id BIGINT AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	data_emprestimo DATETIME NOT NULL,
 	data_devolucao DATE NOT NULL,
-	usuario BIGINT NOT NULL,
-	livro BIGINT NOT NULL,
+    estado BOOLEAN NOT NULL DEFAULT 0,
+	usuario BIGINT,
+	livro BIGINT,
 	FOREIGN KEY(usuario) REFERENCES Usuario(usuario_id),
 	FOREIGN KEY(livro) REFERENCES Livro(livro_id)
 );

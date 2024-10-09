@@ -1,5 +1,8 @@
 package br.ifsul.bdii.gui;
 
+import java.time.*;
+import java.sql.Date;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,8 +21,9 @@ import br.ifsul.bdii.domain.entity.Emprestimo;
 import br.ifsul.bdii.domain.entity.Livro;
 import br.ifsul.bdii.domain.entity.Usuario;
 import br.ifsul.bdii.service.EmprestimoService;
-import br.ifsul.bdii.service.LivroService;
 
+import br.ifsul.bdii.domain.entity.Avaliacao;
+import br.ifsul.bdii.service.AvaliacaoService;
 
 public class UILivro extends JFrame{
 
@@ -30,12 +34,14 @@ public class UILivro extends JFrame{
     private JLabel txtDescricao;
     private JLabel txtCapaLivro;
     private JTextField txtComentario;
+    private JTextField txtNota;
     private JButton btnEnviar;
     private JButton btnComentarios;
     private JButton btnPerfil;
     private JButton btnEmprestimo;
 
     private EmprestimoService emprestimoService;
+    private AvaliacaoService avaliacaoService;
 
     public UILivro(Usuario usuario, Livro livro){
 
@@ -79,10 +85,19 @@ public class UILivro extends JFrame{
         txtComentario.setBounds(400, 460, 500, 30);
         contentPane.add(txtComentario);
 
+        txtNota = new JTextField();
+        contentPane.add(txtNota);
+
         btnEnviar = new JButton("Enviar");
         btnEnviar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-
+                Avaliacao avaliacao = realizaAvaliacao(txtComentario.getText(), txtNota.getText());
+                if(avaliacao!=null){
+                    JOptionPane.showMessageDialog(contentPane,"","",JOptionPane.INFORMATION_MESSAGE);
+                    btnEnviar.setEnabled(false);
+                } else {
+                    
+                }
             }
         });
         btnEnviar.setBounds(900, 460, 100, 30);
@@ -112,11 +127,12 @@ public class UILivro extends JFrame{
         btnEmprestimo = new JButton("Emprestimo");
         btnEmprestimo.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                if(isEmprestado(livro)) {
+                if(!isEmprestado(livro)) {
                     JOptionPane.showMessageDialog(contentPane, "ERRO. O livro já foi emprestado", "Erro de emprestimo", JOptionPane.ERROR_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(contentPane, "CERTO. O livro foi emprestado com sucesso", "Sucesso no emprestimo", JOptionPane.INFORMATION_MESSAGE);
                     btnEmprestimo.setEnabled(false);
+                    realizaEmprestimo(usuario, livro);
                 }
             }
         });
@@ -127,6 +143,37 @@ public class UILivro extends JFrame{
     private Boolean isEmprestado(Livro livro) {
         Emprestimo e = emprestimoService.findByLivroId(livro.getId());
 
-        return e.getEstado();
+        if(e==null) {
+            return true;
+        } else {
+            return e.getEstado();
+        }
+    }
+
+    private void realizaEmprestimo(Usuario usuario, Livro livro) {
+        Date dataAtual = Date.valueOf(LocalDate.now());
+        Date dataDevolucao = Date.valueOf(LocalDate.now().plusWeeks(2));
+
+        Emprestimo e = Emprestimo.builder()
+            .dataEmprestimo(dataAtual)
+            .dataDevolucao(dataDevolucao)
+            .usuario(usuario)
+            .livro(livro)
+            .estado(false)
+            .build();
+            
+        emprestimoService.save(e);
+    }
+
+    private Avaliacao realizaAvaliacao(String texto, String nota) {
+        Double d = Double.parseDouble(nota);
+
+        Avaliacao avaliacao = Avaliacao.builder()
+            .texto(texto)
+            .nota(d)
+            .build();
+
+        return avaliacaoService.save(avaliacao);
+
     }
 }

@@ -22,7 +22,7 @@ import lombok.Builder.Default;
 public class Livro {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "livro_id")
     private Long id;
 

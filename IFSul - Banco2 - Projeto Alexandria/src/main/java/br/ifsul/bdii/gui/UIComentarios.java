@@ -21,6 +21,8 @@ public class UIComentarios extends JFrame{
     private JButton btnPerfil;
     private JButton btnVerPerfil;
 
+
+
     public UIComentarios(Usuario usuario){
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 1200, 900);
