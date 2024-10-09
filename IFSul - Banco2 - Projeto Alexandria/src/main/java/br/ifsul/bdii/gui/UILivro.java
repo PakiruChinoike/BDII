@@ -95,6 +95,7 @@ public class UILivro extends JFrame{
                 if(avaliacao!=null){
                     JOptionPane.showMessageDialog(contentPane,"","",JOptionPane.INFORMATION_MESSAGE);
                     btnEnviar.setEnabled(false);
+                    realizaAvaliacao(avaliacao);
                 } else {
                     
                 }
