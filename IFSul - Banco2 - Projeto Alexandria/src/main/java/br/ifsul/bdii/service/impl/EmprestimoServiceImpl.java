@@ -53,6 +53,13 @@ public class EmprestimoServiceImpl implements EmprestimoService{
     }
 
     @Override
+    public Emprestimo findByUsuarioId(Long id) {
+        return repository.findByUsuarioId(
+            id
+            ).orElse(null);
+    }
+
+    @Override
     public List<Emprestimo> findAll() {
         return repository.findAll();
     }

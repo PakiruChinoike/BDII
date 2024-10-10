@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.swing.JOptionPane;
 import javax.swing.border.EmptyBorder;
 
 import br.ifsul.bdii.Starter;
@@ -74,10 +75,10 @@ public class UICadastroUsuario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Usuario usuario = realizarCadastro(txtNome.getText(), txtEmail.getText(), txtTelefone.getText(), new String(txtSenha.getPassword()));
 				if (usuario!=null) {
-					//MOSTRAR MENSAGEM DE USUARIO CRIADO
+					JOptionPane.showMessageDialog(contentPane,"Sucesso","Sucesso ao cadastrar usuário!",JOptionPane.INFORMATION_MESSAGE);
 					dispose();
 				} else {
-					//MOSTRAR MENSAGEM DE ERRO
+					JOptionPane.showMessageDialog(contentPane,"Erro","Erro ao cadastrar usuário!",JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});

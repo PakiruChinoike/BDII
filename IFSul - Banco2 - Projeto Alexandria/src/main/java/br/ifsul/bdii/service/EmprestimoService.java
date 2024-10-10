@@ -12,6 +12,7 @@ public interface EmprestimoService{
     List<Emprestimo> findByDateSince(Date dateSince);
     List<Emprestimo> findByLivroNome(String name);
     Emprestimo findByLivroId(Long id);
+    Emprestimo findByUsuarioId(Long id);
     List<Emprestimo> findAll();
     Emprestimo save (Emprestimo emprestimo);
     void update (Emprestimo emprestimo, Long id);

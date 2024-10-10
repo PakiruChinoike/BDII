@@ -5,13 +5,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Builder.Default;
 
 @Data
 @AllArgsConstructor
@@ -32,14 +31,10 @@ public class Livro {
     @Column(name = "descricao")
     private String descricao;
 
-    @Column(name = "nota")
-    @Default
-    private Double nota = 0.0D;
-
     @Column(name = "ano")
     private String ano;
     
-    @OneToOne
+    @ManyToOne
     private Autor autor;
 
 }

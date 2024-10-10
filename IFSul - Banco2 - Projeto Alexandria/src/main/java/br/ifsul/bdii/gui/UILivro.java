@@ -21,7 +21,7 @@ import br.ifsul.bdii.domain.entity.Emprestimo;
 import br.ifsul.bdii.domain.entity.Livro;
 import br.ifsul.bdii.domain.entity.Usuario;
 import br.ifsul.bdii.service.EmprestimoService;
-
+import br.ifsul.bdii.service.UsuarioService;
 import br.ifsul.bdii.domain.entity.Avaliacao;
 import br.ifsul.bdii.service.AvaliacaoService;
 
@@ -30,22 +30,24 @@ public class UILivro extends JFrame{
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private JLabel txtTitulo;
-    private JLabel txtAvaliacao;
     private JLabel txtDescricao;
     private JLabel txtCapaLivro;
     private JTextField txtComentario;
-    private JTextField txtNota;
     private JButton btnEnviar;
     private JButton btnComentarios;
     private JButton btnPerfil;
     private JButton btnEmprestimo;
+    private JButton btnVoltar;
 
     private EmprestimoService emprestimoService;
     private AvaliacaoService avaliacaoService;
+    private UsuarioService usuarioService;
 
     public UILivro(Usuario usuario, Livro livro){
 
+        avaliacaoService = Starter._avaliacaoService;
         emprestimoService = Starter._emprestimoService;
+        usuarioService = Starter._usuarioService;
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 1200, 600);
@@ -55,16 +57,22 @@ public class UILivro extends JFrame{
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
+        btnVoltar = new JButton("<-");
+        btnVoltar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                UIPrincipal UIPri = new UIPrincipal(usuario);
+                UIPri.setVisible(true);
+                dispose();
+
+            }
+        });
+        btnVoltar.setBounds(0,0,50,30);
+        contentPane.add(btnVoltar);
+
         txtTitulo = new JLabel(livro.getTitulo());
-        txtTitulo.setBounds(65, 20, 90, 30);
+        txtTitulo.setBounds(65, 20, 150, 30);
         txtTitulo.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(txtTitulo);
-
-        txtAvaliacao = new JLabel(String.valueOf(livro.getNota()));
-        txtAvaliacao.setBounds(65, 450, 90, 30);
-        txtAvaliacao.setBorder(new LineBorder(Color.BLACK, 1));
-        txtAvaliacao.setHorizontalAlignment(SwingConstants.CENTER);
-        contentPane.add(txtAvaliacao);
 
         txtDescricao =new JLabel(livro.getDescricao());
         txtDescricao.setBounds(400, 100, 600, 300);
@@ -85,19 +93,15 @@ public class UILivro extends JFrame{
         txtComentario.setBounds(400, 460, 500, 30);
         contentPane.add(txtComentario);
 
-        txtNota = new JTextField();
-        contentPane.add(txtNota);
-
         btnEnviar = new JButton("Enviar");
         btnEnviar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                Avaliacao avaliacao = realizaAvaliacao(txtComentario.getText(), txtNota.getText());
+                Avaliacao avaliacao = realizaAvaliacao(txtComentario.getText(), usuario, livro);
                 if(avaliacao!=null){
-                    JOptionPane.showMessageDialog(contentPane,"","",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(contentPane,"Sucesso","Comentario salvo com sucesso!",JOptionPane.INFORMATION_MESSAGE);
                     btnEnviar.setEnabled(false);
-                    realizaAvaliacao(avaliacao);
                 } else {
-                    
+                    JOptionPane.showMessageDialog(contentPane,"Erro","Erro em salvar o comentario!",JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -107,8 +111,9 @@ public class UILivro extends JFrame{
         btnComentarios = new JButton("Comentarios");
         btnComentarios.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                UIComentarios uiCom = new UIComentarios(usuario);
+                UIComentarios uiCom = new UIComentarios(usuario, livro);
                 uiCom.setVisible(true);
+                dispose();
             }
         });
         btnComentarios.setBounds(400, 500, 600, 30);
@@ -117,7 +122,7 @@ public class UILivro extends JFrame{
         btnPerfil = new JButton("Perfil");
         btnPerfil.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                UIPerfil uiPer = new UIPerfil(usuario);
+                UIPerfil uiPer = new UIPerfil(usuario, usuario);
                 uiPer.setVisible(true);
             }
         });
@@ -164,17 +169,18 @@ public class UILivro extends JFrame{
             .build();
             
         emprestimoService.save(e);
+        usuario.setEmprestimo(true);
+        usuarioService.update(usuario, usuario.getId());
     }
 
-    private Avaliacao realizaAvaliacao(String texto, String nota) {
-        Double d = Double.parseDouble(nota);
+    private Avaliacao realizaAvaliacao(String texto, Usuario usuario, Livro livro) {
 
         Avaliacao avaliacao = Avaliacao.builder()
             .texto(texto)
-            .nota(d)
+            .usuario(usuario)
+            .livro(livro)
             .build();
 
         return avaliacaoService.save(avaliacao);
-
     }
 }

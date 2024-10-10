@@ -39,6 +39,5 @@ public class Autor {
     
     @Column (name = "data_morte")
     private Date dataMorte;
-    
-    
+     
 }

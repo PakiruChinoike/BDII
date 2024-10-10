@@ -10,8 +10,6 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import br.ifsul.bdii.exception.ServiceRuleException;
 import br.ifsul.bdii.domain.repository.UsuarioRepository;
-import br.ifsul.bdii.domain.entity.Avaliacao;
-import br.ifsul.bdii.domain.entity.Emprestimo;
 import br.ifsul.bdii.domain.entity.Usuario;
 
 @Service
@@ -53,18 +51,6 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Override
     public List<Usuario> findAll() {
         return repository.findAll();
-    }
-
-    @Override
-    public Emprestimo findCurrentEmprestimo(Long id) {
-        return repository.findCurrentEmprestimo(
-            id
-        ).orElseThrow(() -> new ServiceRuleException("Id de usuário não encontrado."));
-    }
-
-    @Override
-    public List<Avaliacao> findAvaliacoes(Long id) {
-        return repository.findAvaliacoes(id);
     }
 
     @Override

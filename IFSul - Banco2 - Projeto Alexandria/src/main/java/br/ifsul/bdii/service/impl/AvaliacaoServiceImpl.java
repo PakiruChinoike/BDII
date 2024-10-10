@@ -30,6 +30,11 @@ public class AvaliacaoServiceImpl implements AvaliacaoService{
     }
 
     @Override
+    public List<Avaliacao> findByLivroId(Long id) {
+        return repository.findByLivroId(id);
+    }
+
+    @Override
     @Transactional
     public Avaliacao save(Avaliacao avaliacao) {
         return repository.save(avaliacao);

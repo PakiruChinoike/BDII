@@ -25,6 +25,7 @@ public class UIPrincipal extends JFrame{
     private JButton btnBuscar;
     private JTextField txtPesquisa;
     private JButton btnPerfil;
+    private JButton btnVoltar;
 
     private LivroService livroService;
 
@@ -39,6 +40,16 @@ public class UIPrincipal extends JFrame{
 
         setContentPane(contentPane);
         contentPane.setLayout(null);
+        btnVoltar = new JButton("<-");
+        btnVoltar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+                UIInicio UIIni = new UIInicio();
+                UIIni.setVisible(true);
+                dispose();
+            }
+        });
+        btnVoltar.setBounds(0,0,50,30);
+        contentPane.add(btnVoltar);
 
         JLabel lblNewLabel = new JLabel("Pesquisa");
         lblNewLabel.setBounds(60, 20, 90, 30);
@@ -52,7 +63,7 @@ public class UIPrincipal extends JFrame{
         btnPerfil = new JButton("Perfil");
         btnPerfil.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                UIPerfil uiPer = new UIPerfil(usuario);
+                UIPerfil uiPer = new UIPerfil(usuario, usuario);
                 uiPer.setVisible(true);
                 dispose();
             }
@@ -102,6 +113,7 @@ public class UIPrincipal extends JFrame{
                 public void actionPerformed(ActionEvent e) {
                     UILivro uiLivro = new UILivro(usuario, livro);
                     uiLivro.setVisible(true);
+                    dispose();
                 } 
             });
 

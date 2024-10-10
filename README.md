@@ -2,18 +2,12 @@ Coisas a fazer:
 
 Funcionalidade de adicionar comentarios, fazer estes mesmos comentarios aparecenrem na tela de comentarios;
 
-(talvez implemetar a descrição do ultimo livro lido em UIPerfil);
-
 Adicionar as infromações do usuario em UIPerfil;
 
 (talvez adicionar um quebrador de linha na descrição de livros na tela UILivro),
 (adicionar outro quebrador de linhas nos botões da tela UIPrincipal para os titulos).
 
-Adicionar a funcionalidade de emprestimo em UILivro;
-
 Adicionar a funcionalidade de devolução do livro em UIPerfil;
-
-Botões retornaveis para a tela UIPrincipal;
 
 "alerta de usuario talvez";
 
